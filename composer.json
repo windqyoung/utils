@@ -1,0 +1,15 @@
+{
+    "name": "windqyoung/utils",
+    "authors": [
+        {
+            "name": "windsor",
+            "email": "txcses@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Windqyoung\\Utils\\": "src/"
+        }
+    }
+}
