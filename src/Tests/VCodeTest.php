@@ -5,6 +5,7 @@ namespace Windqyoung\Utils\Tests;
 
 
 use Windqyoung\Utils\Sms\VCode;
+use Windqyoung\Utils\Sms\SenderInterface;
 
 class VCodeTest extends \PHPUnit_Framework_TestCase
 {
@@ -118,6 +119,9 @@ class VCodeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($v->check($mobile, $vcode, $bag, false));
 
+        $this->assertFalse($v->check($mobile, $vcode . 'wrong', $bag, false));
+        $this->assertFalse($v->check($mobile . 'wrong', $vcode, $bag, false));
+
         $this->assertTrue($v->check($mobile, $vcode, $bag, true));
 
         $this->assertFalse($v->check($mobile, $vcode, $bag));
@@ -125,7 +129,7 @@ class VCodeTest extends \PHPUnit_Framework_TestCase
 }
 
 
-class Sender
+class Sender implements SenderInterface
 {
     public $mobile;
     public $msg;
