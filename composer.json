@@ -1,11 +1,13 @@
 {
     "name": "windqyoung/utils",
+    "description": "My private utils",
     "authors": [
         {
             "name": "windsor",
             "email": "txcses@gmail.com"
         }
     ],
+    "license": "MIT",
     "require": {},
     "autoload": {
         "psr-4": {
