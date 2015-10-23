@@ -4,6 +4,7 @@ namespace Windqyoung\Utils\Artisan;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Windqyoung\Utils\Sms\VCode;
+use Windqyoung\Utils\Sms\Sender;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -48,6 +49,21 @@ class ServiceProvider extends BaseServiceProvider
     protected function makeSmsSender()
     {
         return $this->app->make('windq.sms_send_service');
+    }
+
+    /**
+     * 设置发送短信的demo
+     */
+    private function regSmsSendService__Demo()
+    {
+        $this->app->singleton('windq.sms_send_service', function () {
+            $sender = new Sender();
+            $sender->setSendDataBuilder(function ($mobile, $message) {
+                return 'http://demo.com/sms/send?' . http_build_query(compact('mobile', 'message'));
+            });
+
+            return $sender;
+        });
     }
 
 }
