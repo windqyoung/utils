@@ -27,6 +27,19 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->regSmsVCodeService();
+
+        $this->regBladeExtension();
+    }
+
+
+    protected function regBladeExtension()
+    {
+        $this->app->extend('blade.compiler', function ($blade, $app) {
+            $ext = new BladeExtension($blade, $app);
+            $ext->register();
+
+            return $blade;
+        });
     }
 
     /**
