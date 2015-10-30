@@ -77,4 +77,10 @@ class OrderBy
     {
         return self::ASC == $this->value ? self::DESC : self::ASC;
     }
+
+
+    public function isDesc()
+    {
+        return self::DESC == $this->value;
+    }
 }
