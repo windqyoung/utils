@@ -4,7 +4,7 @@
          bootstrap="vendor/autoload.php"
 >
     <testsuites>
-        <testsuite name="验证码测试">
+        <testsuite name="测试">
             <directory>src/Tests/</directory>
         </testsuite>
     </testsuites>
