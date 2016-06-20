@@ -65,7 +65,7 @@ class Pipeline
 
         if ($ref->isStatic())
         {
-            return $next;
+            return [$ref->class, $ref->name];
         }
 
         return [new $ref->class, $ref->name];
