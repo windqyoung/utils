@@ -15,6 +15,7 @@ class Pipeline
     public function __construct($pipes)
     {
         $this->pipes = $pipes;
+        reset($this->pipes);
     }
 
     public function __invoke($args)
@@ -29,12 +30,13 @@ class Pipeline
 
     private function createNext()
     {
-        if (count($this->pipes) == 0)
+        $next = current($this->pipes);
+        next($this->pipes);
+        if (! $next)
         {
+            reset($this->pipes);
             return;
         }
-
-        $next = array_shift($this->pipes);
 
         if (is_string($next))
         {
